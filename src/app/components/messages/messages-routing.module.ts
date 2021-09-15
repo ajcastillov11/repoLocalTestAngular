@@ -1,20 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MessagesFormComponent } from './messages-form/messages-form.component';
-import { MessagesListComponent } from './messages-list/messages-list.component';
+import { MessageComponent } from './message/message.component';
+
 
 const routes: Routes = [
   {
     path: '',
     children: [
       {
-        path: 'messagesList', component: MessagesListComponent
+        path: 'messages', component: MessageComponent
       },
       {
-        path: 'messagesForm', component: MessagesFormComponent
-      },
-      {
-        path: '**', redirectTo: 'messagesList'
+        path: '**', redirectTo: 'messages'
       }
     ]
   }

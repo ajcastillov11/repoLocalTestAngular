@@ -2,18 +2,25 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MessagesRoutingModule } from './messages-routing.module';
-import { MessagesFormComponent } from './messages-form/messages-form.component';
-import { MessagesListComponent } from './messages-list/messages-list.component';
+
+import { MessageComponent } from './message/message.component';
+import { EditarComponent } from './message/modales/editar/editar.component';
+import { NuevoComponent } from './message/modales/nuevo/nuevo.component';
+import { EliminarComponent } from './message/modales/eliminar/eliminar.component';
+import { SharedModule } from 'src/app/modules/common/compartida.module';
 
 
 @NgModule({
   declarations: [
-    MessagesFormComponent,
-    MessagesListComponent
+    MessageComponent,
+    EditarComponent,
+    NuevoComponent,
+    EliminarComponent
   ],
   imports: [
     CommonModule,
-    MessagesRoutingModule
+    MessagesRoutingModule,
+    SharedModule
   ]
 })
 export class MessagesModule { }
