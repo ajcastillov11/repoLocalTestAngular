@@ -39,4 +39,9 @@ export class MessagesService {
     },
 
   ];
+
+
+  addMessage(data : MessageModel):void{
+    console.log(data);
+  }
 }
