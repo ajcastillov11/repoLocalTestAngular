@@ -1,6 +1,6 @@
 import { IMessages } from "../interfaces/imessages";
 
-export class Message implements IMessages {
+export class MessageModel implements IMessages {
     id: number = 0;
     codigo: string = '';
     mensaje: string = '';

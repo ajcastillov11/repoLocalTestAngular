@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Message, tipoMessage } from '../models/message';
+import { MessageModel, tipoMessage } from '../models/message';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ export class MessagesService {
 
   constructor(private http: HttpClient) { }
 
-  listMessages: Message[] = [
+  listMessages: MessageModel[] = [
     {
       id: 1,
       codigo: 'msj500',
