@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, Validators } from '@angular/forms';
-import { MessageModel } from 'src/app/models/message';
+import { MessageModel, tipoMessage } from 'src/app/models/message';
 import { MessagesService } from 'src/app/services/messages.service';
 import Swal from 'sweetalert2';
 
@@ -16,6 +16,8 @@ export class NuevoMensajeComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: MessageModel,
     public httpService: MessagesService) { }
 
+    tiposMensajes: tipoMessage[] = [];
+
   formControl = new FormControl('', [
     Validators.required
   ]);
@@ -29,6 +31,7 @@ export class NuevoMensajeComponent implements OnInit {
 
   
   ngOnInit(): void {
+    this.tiposMensajes = this.httpService.getListTiposMensajes();
   }
 
 

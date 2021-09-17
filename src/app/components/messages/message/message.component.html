@@ -36,7 +36,7 @@
 
         <ng-container matColumnDef="tipo">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.tipo}} </mat-cell>
+          <mat-cell *matCellDef="let row">  {{ _service.getTipoMensaje(row.tipo)}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="actions"> 

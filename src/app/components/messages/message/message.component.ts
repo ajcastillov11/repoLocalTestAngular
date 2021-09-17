@@ -28,7 +28,7 @@ export class MessageComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort | any;
 
   constructor(
-    private _service: MessagesService,
+    public _service: MessagesService,
     public dialog: MatDialog,
   ) {
     

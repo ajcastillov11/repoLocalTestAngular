@@ -48,7 +48,7 @@ export class MessagesService {
     },
   ];
 
-  listTipoMensaje: tipoMessage[] = [
+  private listTipoMensaje: tipoMessage[] = [
     {
       id: 1,
       tipoMensaje: 'Informativo'
@@ -61,6 +61,10 @@ export class MessagesService {
       id: 3,
       tipoMensaje: 'Otro'
     },
+    {
+      id: 4,
+      tipoMensaje: 'Falla'
+    },
   ];
 
   getListTiposMensajes(): tipoMessage[] {
@@ -68,7 +72,8 @@ export class MessagesService {
   }
 
   getTipoMensaje(id: number) {
-
+    let tipoMensaje = this.listTipoMensaje.find(x => x.id === id);
+    return tipoMensaje?.tipoMensaje;
   }
 
   getMessages(): MessageModel[] {

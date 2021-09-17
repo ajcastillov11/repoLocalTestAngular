@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MessageModel } from 'src/app/models/message';
+import { MessageModel, tipoMessage } from 'src/app/models/message';
 import { MessagesService } from 'src/app/services/messages.service';
 import Swal from 'sweetalert2';
 
@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 export class EditarMensajeComponent implements OnInit {
 
   data: MessageModel | any;
+  tiposMensajes: tipoMessage[] = [];
 
   constructor(public dialogRef: MatDialogRef<EditarMensajeComponent>,
     @Inject(MAT_DIALOG_DATA) public datos: any,
@@ -42,6 +43,7 @@ export class EditarMensajeComponent implements OnInit {
 
   ngOnInit(): void {
     this.data = this.datos.row;
+    this.tiposMensajes = this.servive.getListTiposMensajes();
   }
 
   onNoClick(): void {
