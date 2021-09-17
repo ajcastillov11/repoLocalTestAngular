@@ -25,6 +25,9 @@ export class MessageComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['id', 'codigo', 'mensaje', 'tipo', 'actions'];
   dataSource: MatTableDataSource<MessageModel> | any;
 
+  listMessages : MessageModel[] = [];
+ 
+
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
 
@@ -32,11 +35,9 @@ export class MessageComponent implements OnInit, AfterViewInit {
     private _service: MessagesService,
     public dialog: MatDialog,
   ) {
-    // Carga Lista Mensajes
-    const listMensajes = Array.from({ length: 100 }, (_, k) => createNewUser(k + 1));
-
+    
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(listMensajes);
+    this.dataSource = new MatTableDataSource(this.listMessages);
   }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -44,19 +45,26 @@ export class MessageComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+  this.reloadList();  
+  }
 
+  reloadList(){
+    this.listMessages = this._service.getMessages();
+    this.dataSource.data = this.listMessages;
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   addNew(): void {
     const dialogRef = this.dialog.open(NuevoMensajeComponent, {
       width: '60%',
-      //height: '70%',
-      data: {}
+       data: {}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log('Proceso realizado!');
+        this.reloadList(); 
       }
     });
   }
@@ -70,6 +78,7 @@ export class MessageComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log('Proceso realizado!');
+        this.reloadList(); 
       }
     });
   }
@@ -83,13 +92,11 @@ export class MessageComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log('Proceso realizado!');
+        this.reloadList(); 
       }
     });
   }
 
-  refresh() {
-
-  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -99,17 +106,4 @@ export class MessageComponent implements OnInit, AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
-}
-
-
-/** Builds and returns a new User. */
-function createNewUser(id: number): MessageModel {
-  const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' + NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0);
-
-  return {
-    id: id,
-    codigo: name,
-    mensaje: name,
-    tipo: Math.round(Math.random() * 100)
-  };
 }

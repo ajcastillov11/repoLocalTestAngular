@@ -1,6 +1,5 @@
 <div class="container">
-    <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
-
+    <form autocomplete="off" class="mat-dialog-content" #formControl="ngForm">
         <mat-card class="example-card">
             <mat-card-header>
                 <div mat-card-avatar>
@@ -10,7 +9,6 @@
                 <mat-card-subtitle>Nuevo Mensaje</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
-
                 <div class="form">
                     <mat-form-field color="accent">
                         <input matInput #input class="form-control" placeholder="Código" [(ngModel)]="data.codigo"

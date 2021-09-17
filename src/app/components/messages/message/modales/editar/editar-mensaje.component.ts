@@ -13,28 +13,22 @@ export class EditarMensajeComponent implements OnInit {
 
   data: MessageModel | any;
 
-  constructor( public dialogRef: MatDialogRef<EditarMensajeComponent>,
+  constructor(public dialogRef: MatDialogRef<EditarMensajeComponent>,
     @Inject(MAT_DIALOG_DATA) public datos: any,
-    private servive : MessagesService) { }
+    private servive: MessagesService) { }
 
-    formControl = new FormControl('', [
-      Validators.required
-    ]);
+  formControl = new FormControl('', [
+    Validators.required
+  ]);
 
+  getErrorMessage() {
+    return this.formControl.hasError('required') ? 'Campo Requerido' :
+      '';
+  }
 
-    getErrorMessage() {
-      return this.formControl.hasError('required') ? 'Campo Requerido' :
-          '';
-    }
-
-    submit() {
-     
-    }
-
-
-    confirmUpdate(): void {
-      this.servive.updateMessage(this.data);
-    }
+  confirmUpdate(): void {
+    this.servive.updateMessage(this.data);
+  }
 
   ngOnInit(): void {
     this.data = this.datos.row;

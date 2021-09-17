@@ -22,6 +22,30 @@ export class MessagesService {
       mensaje: 'mensaje 0002',
       tipo: 2
     },
+    {
+      id: 3,
+      codigo: 'msj1600',
+      mensaje: 'mensaje 0003',
+      tipo: 2
+    },
+    {
+      id: 4,
+      codigo: 'msj1800',
+      mensaje: 'mensaje 0004',
+      tipo: 3
+    },
+    {
+      id: 5,
+      codigo: 'msj5500',
+      mensaje: 'mensaje 0005',
+      tipo: 3
+    },
+    {
+      id: 6,
+      codigo: 'msj6600',
+      mensaje: 'mensaje 0006',
+      tipo: 2
+    },
   ];
 
   listTipoMensaje: tipoMessage[] = [
@@ -37,9 +61,19 @@ export class MessagesService {
       id: 3,
       tipoMensaje: 'Otro'
     },
-
   ];
 
+  getListTiposMensajes(): tipoMessage[] {
+    return this.listTipoMensaje;
+  }
+
+  getTipoMensaje(id: number) {
+
+  }
+
+  getMessages(): MessageModel[] {
+    return this.listMessages;
+  }
 
   updateMessage(data: MessageModel): void {
     console.log('Actualizado');

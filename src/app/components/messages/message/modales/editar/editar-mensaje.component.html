@@ -1,8 +1,6 @@
 <div class="container">
-    <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
-
+    <form class="mat-dialog-content" #formControl="ngForm">
         <input type="hidden" name="id" [value]="data.id" />
-
         <mat-card class="example-card">
             <mat-card-header>
                 <div mat-card-avatar>
@@ -14,14 +12,14 @@
             <mat-card-content>
 
                 <div class="form">
-                    <mat-form-field color="accent">
+                    <mat-form-field color="primary">
                         <input matInput #input class="form-control" placeholder="Código" [(ngModel)]="data.codigo"
                             name="codigo" required />
                         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="form">
-                    <mat-form-field color="accent">
+                    <mat-form-field color="primary">
                         <textarea matInput #inputmensaje class="form-control" placeholder="Mensaje"
                             [(ngModel)]="data.mensaje" name="mensaje" maxlength="100" required></textarea>
                         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
@@ -29,7 +27,7 @@
                     </mat-form-field>
                 </div>
                 <div class="form">
-                    <mat-form-field color="accent">
+                    <mat-form-field color="primary">
                         <input matInput #input class="form-control" placeholder="Tipo" [(ngModel)]="data.tipo"
                             name="tipo" required>
                         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
