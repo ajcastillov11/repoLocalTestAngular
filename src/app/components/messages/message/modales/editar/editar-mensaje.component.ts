@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MessageModel } from 'src/app/models/message';
 import { MessagesService } from 'src/app/services/messages.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-mensaje',
@@ -28,6 +29,15 @@ export class EditarMensajeComponent implements OnInit {
 
   confirmUpdate(): void {
     this.servive.updateMessage(this.data);
+    Swal.fire({
+      title: 'Mensaje modificado!',
+      text: 'El mensaje ha sido actualizado correctamente! ',
+      icon: 'success',
+      confirmButtonText: 'Aceptar',
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
 
   ngOnInit(): void {

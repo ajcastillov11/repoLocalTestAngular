@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, Validators } from '@angular/forms';
 import { MessageModel } from 'src/app/models/message';
 import { MessagesService } from 'src/app/services/messages.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-nuevo-mensaje',
@@ -37,6 +38,15 @@ export class NuevoMensajeComponent implements OnInit {
 
   public confirmAdd(): void {
     this.httpService.addMessage(this.data);
+    Swal.fire({
+      title: 'Mensaje guardado!',
+      text: 'El mensaje ha sido registrado correctamente! ',
+      icon: 'success',
+      confirmButtonText: 'Aceptar',
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MessageModel } from 'src/app/models/message';
 import { MessagesService } from 'src/app/services/messages.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-eliminar-mensaje',
@@ -26,6 +27,14 @@ export class EliminarMensajeComponent implements OnInit {
 
   confirmDelete(): void {
     this.servive.deleteMessage(this.data.id);
+    Swal.fire({
+      title: 'Mensaje eliminado!',
+      text: 'El mensaje '+ this.data.codigo +' ha sido eliminado correctamente! ',
+      position: 'top-end',
+      icon: 'info',
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
 
 }

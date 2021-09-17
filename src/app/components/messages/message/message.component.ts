@@ -8,12 +8,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { NuevoMensajeComponent } from './modales/nuevo/nuevo-mensaje.component';
 import { EditarMensajeComponent } from './modales/editar/editar-mensaje.component';
 import { EliminarMensajeComponent } from './modales/eliminar/eliminar-mensaje.component';
+import Swal from 'sweetalert2';
 
-
-const NAMES: string[] = [
-  'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Elizabeth'
-];
 
 
 @Component({
@@ -51,8 +47,6 @@ export class MessageComponent implements OnInit, AfterViewInit {
   reloadList(){
     this.listMessages = this._service.getMessages();
     this.dataSource.data = this.listMessages;
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
   }
 
   addNew(): void {
@@ -65,6 +59,7 @@ export class MessageComponent implements OnInit, AfterViewInit {
       if (result) {
         console.log('Proceso realizado!');
         this.reloadList(); 
+
       }
     });
   }
