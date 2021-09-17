@@ -6,11 +6,13 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MessageModel } from 'src/app/models/message';
 import { MatDialog } from '@angular/material/dialog';
 import { NuevoMensajeComponent } from './modales/nuevo/nuevo-mensaje.component';
+import { EditarMensajeComponent } from './modales/editar/editar-mensaje.component';
+import { EliminarMensajeComponent } from './modales/eliminar/eliminar-mensaje.component';
 
 
 const NAMES: string[] = [
   'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Gabriel Se tira el codigo', 'Elizabeth'
+  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Elizabeth'
 ];
 
 
@@ -29,7 +31,7 @@ export class MessageComponent implements OnInit, AfterViewInit {
   constructor(
     private _service: MessagesService,
     public dialog: MatDialog,
-    ) {
+  ) {
     // Carga Lista Mensajes
     const listMensajes = Array.from({ length: 100 }, (_, k) => createNewUser(k + 1));
 
@@ -47,9 +49,9 @@ export class MessageComponent implements OnInit, AfterViewInit {
 
   addNew(): void {
     const dialogRef = this.dialog.open(NuevoMensajeComponent, {
-      width: '70%',
+      width: '60%',
       //height: '70%',
-      data: { }
+      data: {}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -59,12 +61,30 @@ export class MessageComponent implements OnInit, AfterViewInit {
     });
   }
 
-  startEdit(id: number, nombre: string, mensaje: string) {
-    console.log('Actualiza ' + id);
+  startEdit(row: MessageModel) {
+    const dialogRef = this.dialog.open(EditarMensajeComponent, {
+      width: '60%',
+      data: { row }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Proceso realizado!');
+      }
+    });
   }
 
-  deleteItem(id: number, nombre: string, mensaje: string) {
-    console.log('Elimina ' + id);
+  deleteItem(row: MessageModel) {
+    const dialogRef = this.dialog.open(EliminarMensajeComponent, {
+      width: '60%',
+      data: { row }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Proceso realizado!');
+      }
+    });
   }
 
   refresh() {

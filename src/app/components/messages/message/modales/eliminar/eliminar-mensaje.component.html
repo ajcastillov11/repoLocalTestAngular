@@ -1,1 +1,28 @@
-<p>eliminar-mensaje works!</p>
+<div class="container">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div mat-card-avatar>
+                <mat-icon>delete</mat-icon>
+            </div>
+            <mat-card-title>Eliminar mensaje</mat-card-title>
+            <mat-card-subtitle>Eliminar mensaje</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <h3 mat-dialog-nombre><strong>Estas seguro?</strong></h3>
+            <div mat-dialog-content>
+                Id: {{data.id}}
+                <br />
+                Código: {{data.codigo}}
+                <br />
+                Mensaje: {{data.mensaje}}
+                <br />
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <div mat-dialog-actions>
+                <button mat-button [mat-dialog-close]="1" (click)="confirmDelete()">Eliminar</button>
+                <button mat-button (click)="onNoClick()" tabindex="-1">Cancelar</button>
+            </div>
+        </mat-card-actions>
+    </mat-card>
+</div>

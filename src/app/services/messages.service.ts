@@ -41,7 +41,18 @@ export class MessagesService {
   ];
 
 
-  addMessage(data : MessageModel):void{
+  updateMessage(data: MessageModel): void {
+    console.log('Actualizado');
     console.log(data);
   }
+
+  addMessage(data: MessageModel): void {
+    console.log(data);
+  }
+
+
+  deleteMessage(id: number) {
+    console.log('Eliminado ' + id);
+  }
+
 }

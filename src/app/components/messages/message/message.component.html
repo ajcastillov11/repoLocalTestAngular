@@ -7,8 +7,6 @@
   </button>
 </mat-toolbar>
 
-
-
 <mat-card>
   <div class="container mat-elevation-z8">
     <div class="form">
@@ -21,25 +19,21 @@
     <div class="mat-elevation-z8">
       <mat-table mat-table [dataSource]="dataSource" matSort>
 
-        <!-- ID Column -->
         <ng-container matColumnDef="id">
           <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
           <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
         </ng-container>
 
-        <!-- Progress Column -->
         <ng-container matColumnDef="codigo">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Código </mat-header-cell>
           <mat-cell *matCellDef="let row"> {{row.codigo}} </mat-cell>
         </ng-container>
 
-        <!-- Name Column -->
         <ng-container matColumnDef="mensaje">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Mensaje </mat-header-cell>
           <mat-cell *matCellDef="let row"> {{row.mensaje}} </mat-cell>
         </ng-container>
 
-        <!-- Fruit Column -->
         <ng-container matColumnDef="tipo">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </mat-header-cell>
           <mat-cell *matCellDef="let row"> {{row.tipo}} </mat-cell>
@@ -53,20 +47,18 @@
           </mat-header-cell>
           
           <mat-cell *matCellDef="let row;" >
-            <button mat-icon-button color="primary" (click)="startEdit(row.id, row.codigo, row.mensaje)">
+            <button mat-icon-button color="primary" (click)="startEdit(row)">
               <mat-icon aria-label="Edit">edit</mat-icon>
             </button>
-            <button mat-icon-button color="warn" (click)="deleteItem(row.id, row.codigo, row.mensaje)">
+            <button mat-icon-button color="warn" (click)="deleteItem(row)">
               <mat-icon aria-label="Delete">delete</mat-icon>
             </button>
           </mat-cell>
-          
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-        <!-- Row shown when there is no matching data. -->
         <tr class="mat-row no-results" *matNoDataRow>
           <td class="mat-cell" colspan="4">No se han encontrado registros para "{{input.value}}"</td>
         </tr>

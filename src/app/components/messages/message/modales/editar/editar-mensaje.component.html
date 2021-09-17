@@ -1,1 +1,48 @@
-<p>editar-mensaje works!</p>
+<div class="container">
+    <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+
+        <input type="hidden" name="id" [value]="data.id" />
+
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar>
+                    <mat-icon>edit</mat-icon>
+                </div>
+                <mat-card-title>Actualizar Mensaje</mat-card-title>
+                <mat-card-subtitle>Actualiza Mensaje</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+
+                <div class="form">
+                    <mat-form-field color="accent">
+                        <input matInput #input class="form-control" placeholder="Código" [(ngModel)]="data.codigo"
+                            name="codigo" required />
+                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="form">
+                    <mat-form-field color="accent">
+                        <textarea matInput #inputmensaje class="form-control" placeholder="Mensaje"
+                            [(ngModel)]="data.mensaje" name="mensaje" maxlength="100" required></textarea>
+                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                        <mat-hint align="end">{{inputmensaje.value?.length || 0}}/100</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="form">
+                    <mat-form-field color="accent">
+                        <input matInput #input class="form-control" placeholder="Tipo" [(ngModel)]="data.tipo"
+                            name="tipo" required>
+                        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <div mat-dialog-actions>
+                    <button mat-raised-button type="submit" [disabled]="!formControl.valid" color="primary"
+                        [mat-dialog-close]="true" (click)="confirmUpdate()">Guardar</button>
+                    <button mat-raised-button (click)="onNoClick()" color="warn" tabindex="-1">Cancelar</button>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>
