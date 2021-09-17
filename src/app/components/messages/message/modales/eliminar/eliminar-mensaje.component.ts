@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MessageModel } from 'src/app/models/message';
-import { MessagesService } from 'src/app/services/messages.service';
+import { MessageModel } from 'src/app/components/messages/models/message';
+import { MessagesService } from 'src/app/components/messages/services/messages.service';
 import Swal from 'sweetalert2';
 
 @Component({

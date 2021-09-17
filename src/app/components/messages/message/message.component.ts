@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
-import { MessagesService } from 'src/app/services/messages.service';
+import { MessagesService } from 'src/app/components/messages/services/messages.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { MessageModel } from 'src/app/models/message';
+import { MessageModel } from 'src/app/components/messages/models/message';
 import { MatDialog } from '@angular/material/dialog';
 import { NuevoMensajeComponent } from './modales/nuevo/nuevo-mensaje.component';
 import { EditarMensajeComponent } from './modales/editar/editar-mensaje.component';

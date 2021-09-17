@@ -6,7 +6,7 @@ import { AppComponent } from './components/app/app.component';
 import { MessagesModule } from './components/messages/messages.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LetrasPipe } from './pipes/letras.pipe';
-import { SharedModule } from './modules/common/compartida.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
