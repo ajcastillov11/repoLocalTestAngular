@@ -26,10 +26,7 @@ export class NuevoMensajeComponent implements OnInit {
   }
 
 
-  submit(){
-
-  }
-
+  
   ngOnInit(): void {
   }
 
